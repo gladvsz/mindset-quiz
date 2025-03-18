@@ -1,131 +1,134 @@
 <!DOCTYPE html>
-<html lang="pl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kwestionariusz Mindset</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            text-align: center;
-        }
-        .container {
-            max-width: 600px;
-            margin: 20px auto;
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-        }
-        h2 {
-            color: #333;
-        }
-        .question {
-            margin: 15px 0;
-            font-size: 18px;
-            text-align: left;
-        }
-        label {
-            display: block;
-            margin: 5px 0;
-        }
-        button {
-            background: #28a745;
-            color: white;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            width: 100%;
-        }
-        button:hover {
-            background: #218838;
-        }
-    </style>
-    <script>
-
-        function submitForm() {
-            let growth = 0;
-            let fixed = 0;
-            const form = document.getElementById("quiz-form");
-            const answers = new FormData(form);
-            
-            const data = new URLSearchParams();
-            
-            for (let [key, value] of answers.entries()) {
-                data.append(key, value);
-                if (value === "tak") {
-                    growth++;
-                } else {
-                    fixed++;
-                }
-            }
-            
-            data.append("growth", growth);
-            data.append("fixed", fixed);
-            
-            fetch("https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec", {
-                method: "POST",
-                body: data
-                mode: 'no-cors'
-            }).then(response => response.json())
-              .then(result => {
-                  alert("Dziękujemy za udział! Wyniki zostały zapisane.");
-                  form.reset();
-              })
-              .catch(error => console.error("Błąd wysyłania danych:", error));
-        }
-    </script>
-</head>
-<body>
-    <div class="container">
-        <h2>Kwestionariusz Mindset</h2>
-        <form id="quiz-form">
-            <div class="question">1. Lubię wyzwania i wierzę, że pomagają mi się rozwijać.</div>
-            <label><input type="radio" name="q1" value="tak" required> Tak</label>
-            <label><input type="radio" name="q1" value="nie"> Nie</label>
-            
-            <div class="question">2. Kiedy coś jest trudne, wolę próbować dalej, niż się poddawać.</div>
-            <label><input type="radio" name="q2" value="tak" required> Tak</label>
-            <label><input type="radio" name="q2" value="nie"> Nie</label>
-            
-            <div class="question">3. Błędy to dla mnie okazja do nauki, a nie porażka.</div>
-            <label><input type="radio" name="q3" value="tak" required> Tak</label>
-            <label><input type="radio" name="q3" value="nie"> Nie</label>
-            
-            <div class="question">4. Wierzę, że moje umiejętności mogą się poprawiać poprzez praktykę.</div>
-            <label><input type="radio" name="q4" value="tak" required> Tak</label>
-            <label><input type="radio" name="q4" value="nie"> Nie</label>
-            
-            <div class="question">5. Chętnie przyjmuję konstruktywną krytykę, bo może pomóc mi się rozwinąć.</div>
-            <label><input type="radio" name="q5" value="tak" required> Tak</label>
-            <label><input type="radio" name="q5" value="nie"> Nie</label>
-            
-            <div class="question">6. Widząc sukces innych, staram się uczyć od nich, zamiast zazdrościć.</div>
-            <label><input type="radio" name="q6" value="tak" required> Tak</label>
-            <label><input type="radio" name="q6" value="nie"> Nie</label>
-            
-            <div class="question">7. Nie boję się próbować nowych rzeczy, nawet jeśli mogą mi się nie udać.</div>
-            <label><input type="radio" name="q7" value="tak" required> Tak</label>
-            <label><input type="radio" name="q7" value="nie"> Nie</label>
-            
-            <div class="question">8. Wysiłek i ciężka praca mają większe znaczenie niż talent.</div>
-            <label><input type="radio" name="q8" value="tak" required> Tak</label>
-            <label><input type="radio" name="q8" value="nie"> Nie</label>
-            
-            <div class="question">9. Nie ograniczam się do tego, co potrafię teraz – wierzę, że mogę się nauczyć nowych rzeczy.</div>
-            <label><input type="radio" name="q9" value="tak" required> Tak</label>
-            <label><input type="radio" name="q9" value="nie"> Nie</label>
-            
-            <br><br>
-            
-
-
-        </form>
-    </div>
-</body>
-</html>
+ <html lang="pl">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Kwestionariusz Mindset</title>
+     <style>
+         body {
+             font-family: Arial, sans-serif;
+             margin: 0;
+             padding: 0;
+             background-color: #f4f4f4;
+             text-align: center;
+         }
+         .container {
+             max-width: 600px;
+             margin: 20px auto;
+             background: white;
+             padding: 20px;
+             border-radius: 10px;
+             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+         }
+         h2 {
+             color: #333;
+         }
+         .question {
+             margin: 15px 0;
+             font-size: 18px;
+             text-align: left;
+         }
+         label {
+             display: block;
+             margin: 5px 0;
+         }
+         button {
+             background: #28a745;
+             color: white;
+             padding: 10px 15px;
+             border: none;
+             border-radius: 5px;
+             cursor: pointer;
+             font-size: 16px;
+             width: 100%;
+         }
+         button:hover {
+             background: #218838;
+         }
+     </style>
+     <script>
+         document.addEventListener("DOMContentLoaded", function() {
+     document.getElementById("submit-btn").addEventListener("click", submitForm);
+ });
+ 
+         function submitForm() {
+             let growth = 0;
+             let fixed = 0;
+             const form = document.getElementById("quiz-form");
+             const answers = new FormData(form);
+ 
+             const data = new URLSearchParams();
+ 
+             for (let [key, value] of answers.entries()) {
+                 data.append(key, value);
+                 if (value === "tak") {
+                     growth++;
+                 } else {
+                     fixed++;
+                 }
+             }
+ 
+             data.append("growth", growth);
+             data.append("fixed", fixed);
+ 
+             fetch("https://script.google.com/macros/s/AKfycbzadRFZeRWyIJiU-VftrxLlk8XP9AAGRCdJ3K3AN3JCDD3tO8x9PM1hC8Kll_D764In4w/exec", {
+                 method: "POST",
+                 body: data
+                 mode: 'no-cors'
+             }).then(response => response.json())
+               .then(result => {
+                   alert("Dziękujemy za udział! Wyniki zostały zapisane.");
+                   form.reset();
+               })
+               .catch(error => console.error("Błąd wysyłania danych:", error));
+         }
+     </script>
+ </head>
+ <body>
+     <div class="container">
+         <h2>Kwestionariusz Mindset</h2>
+         <form id="quiz-form">
+             <div class="question">1. Lubię wyzwania i wierzę, że pomagają mi się rozwijać.</div>
+             <label><input type="radio" name="q1" value="tak" required> Tak</label>
+             <label><input type="radio" name="q1" value="nie"> Nie</label>
+ 
+             <div class="question">2. Kiedy coś jest trudne, wolę próbować dalej, niż się poddawać.</div>
+             <label><input type="radio" name="q2" value="tak" required> Tak</label>
+             <label><input type="radio" name="q2" value="nie"> Nie</label>
+ 
+             <div class="question">3. Błędy to dla mnie okazja do nauki, a nie porażka.</div>
+             <label><input type="radio" name="q3" value="tak" required> Tak</label>
+             <label><input type="radio" name="q3" value="nie"> Nie</label>
+ 
+             <div class="question">4. Wierzę, że moje umiejętności mogą się poprawiać poprzez praktykę.</div>
+             <label><input type="radio" name="q4" value="tak" required> Tak</label>
+             <label><input type="radio" name="q4" value="nie"> Nie</label>
+ 
+             <div class="question">5. Chętnie przyjmuję konstruktywną krytykę, bo może pomóc mi się rozwinąć.</div>
+             <label><input type="radio" name="q5" value="tak" required> Tak</label>
+             <label><input type="radio" name="q5" value="nie"> Nie</label>
+ 
+             <div class="question">6. Widząc sukces innych, staram się uczyć od nich, zamiast zazdrościć.</div>
+             <label><input type="radio" name="q6" value="tak" required> Tak</label>
+             <label><input type="radio" name="q6" value="nie"> Nie</label>
+ 
+             <div class="question">7. Nie boję się próbować nowych rzeczy, nawet jeśli mogą mi się nie udać.</div>
+             <label><input type="radio" name="q7" value="tak" required> Tak</label>
+             <label><input type="radio" name="q7" value="nie"> Nie</label>
+ 
+             <div class="question">8. Wysiłek i ciężka praca mają większe znaczenie niż talent.</div>
+             <label><input type="radio" name="q8" value="tak" required> Tak</label>
+             <label><input type="radio" name="q8" value="nie"> Nie</label>
+ 
+             <div class="question">9. Nie ograniczam się do tego, co potrafię teraz – wierzę, że mogę się nauczyć nowych rzeczy.</div>
+             <label><input type="radio" name="q9" value="tak" required> Tak</label>
+             <label><input type="radio" name="q9" value="nie"> Nie</label>
+ 
+             <br><br>
+             <button id="submit-btn">Wyślij</button>
+ 
+ 
+         </form>
+     </div>
+ </body>
+ </html>
