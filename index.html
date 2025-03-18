@@ -47,9 +47,6 @@
         }
     </style>
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-    document.getElementById("submit-btn").addEventListener("click", submitForm);
-});
 
         function submitForm() {
             let growth = 0;
@@ -125,7 +122,8 @@
             <label><input type="radio" name="q9" value="nie"> Nie</label>
             
             <br><br>
-            <button id="submit-btn">Wyślij</button>
+            <button type="button" onclick="submitForm()">Wyślij</button>
+
 
         </form>
     </div>
