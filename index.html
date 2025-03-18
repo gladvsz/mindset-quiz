@@ -70,6 +70,7 @@
             fetch("https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec", {
                 method: "POST",
                 body: data
+                mode: 'no-cors'
             }).then(response => response.json())
               .then(result => {
                   alert("Dziękujemy za udział! Wyniki zostały zapisane.");
