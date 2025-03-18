@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kwestionariusz Mindset</title>
+    <script>
+        function submitForm() {
+            let growth = 0;
+            let fixed = 0;
+            const form = document.getElementById("quiz-form");
+            const answers = new FormData(form);
+            
+            const data = new URLSearchParams();
+            
+            for (let [key, value] of answers.entries()) {
+                data.append(key, value);
+                if (value === "tak") {
+                    growth++;
+                } else {
+                    fixed++;
+                }
+            }
+            
+            data.append("growth", growth);
+            data.append("fixed", fixed);
+            
+            fetch("https://script.google.com/macros/s/AKfycbyoV27vEbjLEQUUR3t4xaDWH8J-RutguGCyiK98Q6XRJhGjjuDJY6KHwwqibLRyQ5G_NQ/exec", {
+                method: "POST",
+                body: data
+            }).then(response => response.json())
+              .then(result => {
+                  alert("Dziękujemy za udział! Wyniki zostały zapisane.");
+                  form.reset();
+              })
+              .catch(error => console.error("Błąd wysyłania danych:", error));
+        }
+    </script>
+</head>
+<body>
+    <h2>Kwestionariusz Mindset</h2>
+    <form id="quiz-form">
+        <p>1. Lubię wyzwania i wierzę, że pomagają mi się rozwijać.</p>
+        <label><input type="radio" name="q1" value="tak" required> Tak</label>
+        <label><input type="radio" name="q1" value="nie"> Nie</label>
+        
+        <p>2. Kiedy coś jest trudne, wolę próbować dalej, niż się poddawać.</p>
+        <label><input type="radio" name="q2" value="tak" required> Tak</label>
+        <label><input type="radio" name="q2" value="nie"> Nie</label>
+        
+        <p>3. Błędy to dla mnie okazja do nauki, a nie porażka.</p>
+        <label><input type="radio" name="q3" value="tak" required> Tak</label>
+        <label><input type="radio" name="q3" value="nie"> Nie</label>
+        
+        <p>4. Wierzę, że moje umiejętności mogą się poprawiać poprzez praktykę.</p>
+        <label><input type="radio" name="q4" value="tak" required> Tak</label>
+        <label><input type="radio" name="q4" value="nie"> Nie</label>
+        
+        <p>5. Chętnie przyjmuję konstruktywną krytykę, bo może pomóc mi się rozwinąć.</p>
+        <label><input type="radio" name="q5" value="tak" required> Tak</label>
+        <label><input type="radio" name="q5" value="nie"> Nie</label>
+        
+        <p>6. Widząc sukces innych, staram się uczyć od nich, zamiast zazdrościć.</p>
+        <label><input type="radio" name="q6" value="tak" required> Tak</label>
+        <label><input type="radio" name="q6" value="nie"> Nie</label>
+        
+        <p>7. Nie boję się próbować nowych rzeczy, nawet jeśli mogą mi się nie udać.</p>
+        <label><input type="radio" name="q7" value="tak" required> Tak</label>
+        <label><input type="radio" name="q7" value="nie"> Nie</label>
+        
+        <p>8. Wysiłek i ciężka praca mają większe znaczenie niż talent.</p>
+        <label><input type="radio" name="q8" value="tak" required> Tak</label>
+        <label><input type="radio" name="q8" value="nie"> Nie</label>
+        
+        <p>9. Nie ograniczam się do tego, co potrafię teraz – wierzę, że mogę się nauczyć nowych rzeczy.</p>
+        <label><input type="radio" name="q9" value="tak" required> Tak</label>
+        <label><input type="radio" name="q9" value="nie"> Nie</label>
+        
+        <br><br>
+        <button type="button" onclick="submitForm()">Wyślij</button>
+    </form>
+</body>
+</html>
